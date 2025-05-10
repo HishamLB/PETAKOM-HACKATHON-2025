@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Pekan Wallet</title>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+  <style>
+    :root {
+      --primary-color: #2196F3;
+      --secondary-color: #1976D2;
+      --background-color: #f5f6fa;
+      --text-color: #2c3e50;
+      --card-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background-color: var(--background-color);
+      color: var(--text-color);
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    .sidebar {
+      width: 100%;
+      background: white;
+      padding: 10px 20px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo h2 {
+      color: var(--primary-color);
+      padding: 5px 0;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+    }
+
+    .nav-links li {
+      display: flex;
+      align-items: center;
+      padding: 8px 15px;
+      margin: 0 3px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .nav-links li:hover,
+    .nav-links li.active {
+      background: var(--primary-color);
+      color: white;
+    }
+
+    .nav-links li i {
+      margin-right: 10px;
+    }
+
+    .main-content {
+      padding: 30px 20px;
+    }
+
+    .wallet-header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .wallet-header h1 {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+    }
+
+    .wallet-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+
+    .wallet-card {
+      background: linear-gradient(145deg, var(--primary-color), var(--secondary-color));
+      color: white;
+      border-radius: 20px;
+      padding: 20px;
+      box-shadow: var(--card-shadow);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .wallet-card h3 {
+      font-size: 1.4rem;
+      margin-bottom: 10px;
+    }
+
+    .wallet-card p {
+      font-size: 0.95rem;
+      opacity: 0.9;
+    }
+
+    .wallet-card .material-icons {
+      font-size: 60px;
+      opacity: 0.2;
+      position: absolute;
+      bottom: 10px;
+      right: 10px;
+    }
+
+    .upload-section {
+      margin-top: 40px;
+      text-align: center;
+    }
+
+    .upload-section input[type="file"] {
+      padding: 10px;
+      border: 1px solid var(--primary-color);
+      border-radius: 8px;
+      cursor: pointer;
+      background: white;
+    }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        overflow-x: auto;
+      }
+
+      .nav-links li {
+        white-space: nowrap;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Sidebar -->
+    <nav class="sidebar">
+    <div class="logo">
+    <h2>JomPekan</h2>
+        </div>
+        <ul class="nav-links">
+            <a href="index.html" style="text-decoration: none; color: inherit;">
+            <li>
+                <i class="material-icons">home</i>
+                <span>Home</span>
+            </li>
+            </a>
+
+            <a href="attractions.html" style="text-decoration: none; color: inherit;">
+            <li>
+                <i class="material-icons">place</i>
+                <span>View Attractions</span>
+            </li>
+            </a>
+
+            <a href="gallery.html" style="text-decoration: none; color: inherit;">
+            <li>
+                <i class="material-icons">photo_library</i>
+                <span>Gallery</span>
+            </li>
+            </a>
+
+            <a href="wallet.html" style="text-decoration: none; color: inherit;">
+            <li class="active">
+                <i class="material-icons">account_balance_wallet</i>
+                <span>Wallet</span>
+            </li>
+            </a>
+
+            <a href="login.html" style="text-decoration: none; color: inherit;">
+            <li>
+                <i class="material-icons">login</i>
+                <span>Log In</span>
+            </li>
+            </a>
+        </ul>
+        </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <div class="wallet-header">
+        <h1>Your Wallet</h1>
+        <p>Keep your bookings and tickets safe and accessible</p>
+      </div>
+
+      <!-- Wallet Cards -->
+      <div class="wallet-grid">
+        <div class="wallet-card">
+          <h3>Hotel Booking</h3>
+          <p>Hotel Seri Pekan<br/>Check-in: 12 May</p>
+          <i class="material-icons">hotel</i>
+        </div>
+        <div class="wallet-card">
+          <h3>Festival Ticket</h3>
+          <p>Pekan Cultural Fest<br/>Entry: 13 May</p>
+          <i class="material-icons">confirmation_number</i>
+        </div>
+        <div class="wallet-card">
+          <h3>Parking Pass</h3>
+          <p>Zone A, Lot 22<br/>Valid: 12–14 May</p>
+          <i class="material-icons">local_parking</i>
+        </div>
+        <div class="wallet-card">
+          <h3>Shopping Receipt</h3>
+          <p>RM120 - Pekan Souvenir Shop</p>
+          <i class="material-icons">receipt_long</i>
+        </div>
+      </div>
+
+    <!-- Upload Form -->
+        <div class="recent-activities" style="margin-top: 50px; padding: 0 20px;">
+        <h2>Upload New Item</h2>
+        <form id="wallet-upload-form" style="background: #f9f9f9; padding: 30px; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); display: flex; flex-direction: column; gap: 20px; width: 100%;">
+            
+            <!-- Custom File Input -->
+            <label style="font-weight: bold;">Choose File:</label>
+            <label for="file-upload" style="background-color: #f1f1f1; padding: 12px 20px; border-radius: 8px; border: 1px solid #ccc; cursor: pointer; width: fit-content;">
+            📁 Select File
+            </label>
+            <input id="file-upload" type="file" required style="display: none;">
+
+            <!-- Type Dropdown -->
+            <label style="font-weight: bold;">Select Type:</label>
+            <select required style="padding: 12px; border-radius: 8px; border: 1px solid #ccc; max-width: 400px;">
+            <option value="" disabled selected>Select Type</option>
+            <option value="ticket">Ticket</option>
+            <option value="hotel">Hotel Booking</option>
+            <option value="receipt">Receipt</option>
+            <option value="pass">Pass</option>
+            <option value="other">Other</option>
+            </select>
+
+            <!-- Description Input -->
+            <label style="font-weight: bold;">Description:</label>
+            <input type="text" placeholder="Enter Description" required style="padding: 12px; border-radius: 8px; border: 1px solid #ccc; max-width: 600px;">
+
+            <!-- Submit Button -->
+            <button type="submit" style="background-color: #2196F3; color: white; padding: 12px 24px; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; width: fit-content;">
+            ➕ Upload
+            </button>
+        </form>
+        </div>
+    </main>
+  </div>
+</body>
+</html>
