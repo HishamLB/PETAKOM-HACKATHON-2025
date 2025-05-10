@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sultan Abu Bakar Museum - Pekan Tourism</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #2196F3;
+            --background-color: #f5f6fa;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .hero-image {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+        }
+
+        .header-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 30px 0;
+        }
+
+        .title-area h1 {
+            font-size: 2.5rem;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+
+        .rating-badge {
+            background: #fff;
+            padding: 10px 20px;
+            border-radius: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .rating-badge i {
+            color: #FFD700;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-bottom: 40px;
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+        }
+
+        .info-item {
+            padding: 20px;
+            border-right: 1px solid #eee;
+        }
+
+        .info-item:last-child {
+            border-right: none;
+        }
+
+        .info-item i {
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .about-section {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 30px;
+            margin: 40px 0;
+        }
+
+        .about-content {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+        }
+
+        .about-content h2 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+        }
+
+        .about-content p {
+            line-height: 1.8;
+            color: #666;
+        }
+
+        .visitor-tips {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+        }
+
+        .visitor-tips h2 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+        }
+
+        .tip-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            padding: 10px;
+            background: var(--background-color);
+            border-radius: 8px;
+        }
+
+        .tip-item i {
+            color: var(--primary-color);
+            margin-right: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .about-section {
+                grid-template-columns: 1fr;
+            }
+            
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .info-item {
+                border-right: none;
+                border-bottom: 1px solid #eee;
+            }
+
+            .info-item:last-child {
+                border-bottom: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <img src="src/sultanabubakr.jpeg" alt="Sultan Abu Bakar Museum" class="hero-image">
+    
+    <div class="content">
+        <div class="header-section">
+            <div class="title-area">
+                <h1>Sultan Abu Bakar Museum</h1>
+                <p><i class="material-icons">place</i> Pekan, Pahang</p>
+            </div>
+            <div class="rating-badge">
+                <i class="material-icons">star</i>
+                4.8 (123 reviews)
+            </div>
+        </div>
+
+        <div class="info-grid">
+            <div class="info-item">
+                <i class="material-icons">schedule</i>
+                <h3>Opening Hours</h3>
+                <p>9:00 AM - 5:00 PM</p>
+            </div>
+            <div class="info-item">
+                <i class="material-icons">payments</i>
+                <h3>Entrance Fee</h3>
+                <p>RM 5 (Adults)<br>RM 2 (Children)</p>
+            </div>
+            <div class="info-item">
+                <i class="material-icons">directions_bus</i>
+                <h3>Getting There</h3>
+                <p>10 min from Pekan Town</p>
+            </div>
+        </div>
+
+        <div class="about-section">
+            <div class="about-content">
+                <h2>About</h2>
+                <p>The Sultan Abu Bakar Museum, housed in a former royal palace, showcases the rich heritage of Pahang's royal family and local culture. Built in 1929, this museum features an extensive collection of royal artifacts, traditional weapons, and historical photographs.</p>
+                <p style="margin-top: 20px">The museum provides visitors with a unique glimpse into the royal heritage of Pahang, featuring carefully preserved artifacts and historical items that tell the story of the state's rich cultural history.</p>
+            </div>
+            
+            <div class="visitor-tips">
+                <h2>Visitor Tips</h2>
+                <div class="tip-item">
+                    <i class="material-icons">photo_camera</i>
+                    <span>Photography allowed in designated areas</span>
+                </div>
+                <div class="tip-item">
+                    <i class="material-icons">record_voice_over</i>
+                    <span>Guided tours in Malay and English</span>
+                </div>
+                <div class="tip-item">
+                    <i class="material-icons">checkroom</i>
+                    <span>Proper attire required</span>
+                </div>
+                <div class="tip-item">
+                    <i class="material-icons">accessible</i>
+                    <span>Wheelchair accessible</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

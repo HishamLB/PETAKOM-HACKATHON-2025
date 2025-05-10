@@ -29,6 +29,28 @@
             margin: 40px 20px;
         }
 
+        .sort-container {
+            display: flex;
+            gap: 10px;
+            margin: 20px;
+            flex-wrap: wrap;
+        }
+
+        .sort-button {
+            padding: 8px 16px;
+            border: 2px solid var(--primary-color);
+            border-radius: 20px;
+            background: white;
+            color: var(--primary-color);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .sort-button.active {
+            background: var(--primary-color);
+            color: white;
+        }
+
         .attractions-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 280px)); /* reduced width */
@@ -45,6 +67,13 @@
             transition: transform 0.3s ease;
             position: relative;
             max-width: 280px; /* limit maximum width */
+            cursor: pointer;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .attraction-card.hidden {
+            display: none;
         }
 
         .attraction-card:hover {
@@ -159,8 +188,16 @@
 <body>
     <h1 class="explore-header">Explore Pekan</h1>
     
+    <div class="sort-container">
+        <button class="sort-button active" data-category="all">All</button>
+        <button class="sort-button" data-category="historical">Historical</button>
+        <button class="sort-button" data-category="cultural">Cultural</button>
+        <button class="sort-button" data-category="nature">Nature</button>
+        <button class="sort-button" data-category="religious">Religious</button>
+    </div>
+
     <div class="attractions-grid">
-        <div class="attraction-card">
+        <a href="attraction-details.html" class="attraction-card" data-categories="historical,cultural">
             <div class="rating">
                 <i class="material-icons">star</i>
                 4.8
@@ -189,14 +226,14 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </a>
 
-        <div class="attraction-card">
+        <a href="sultan-ahmad-mosque-details.html" class="attraction-card" data-categories="religious,cultural">
             <div class="rating">
                 <i class="material-icons">star</i>
                 4.5
             </div>
-            <img src="src/sultan-ahmad-mosque.jpg" alt="Sultan Ahmad Shah Mosque" class="attraction-image">
+            <img src="src/sultanahmad.jpg" alt="Sultan Ahmad Shah Mosque" class="attraction-image">
             <div class="attraction-info">
                 <h3>Sultan Ahmad Shah Mosque</h3>
                 <div class="location">
@@ -220,9 +257,9 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </a>
 
-        <div class="attraction-card">
+        <a href="pekan-waterfront-details.html" class="attraction-card" data-categories="nature">
             <div class="rating">
                 <i class="material-icons">star</i>
                 4.7
@@ -251,7 +288,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </a>
     </div>
 
     <div class="map-section">
@@ -260,5 +297,34 @@
             Map will be integrated here
         </div>
     </div>
+
+    <script>
+        const sortButtons = document.querySelectorAll('.sort-button');
+        const attractions = document.querySelectorAll('.attraction-card');
+
+        sortButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active class from all buttons
+                sortButtons.forEach(btn => btn.classList.remove('active'));
+                // Add active class to clicked button
+                button.classList.add('active');
+
+                const category = button.dataset.category;
+
+                attractions.forEach(card => {
+                    if (category === 'all') {
+                        card.classList.remove('hidden');
+                    } else {
+                        const categories = card.dataset.categories.split(',');
+                        if (categories.includes(category)) {
+                            card.classList.remove('hidden');
+                        } else {
+                            card.classList.add('hidden');
+                        }
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html>
