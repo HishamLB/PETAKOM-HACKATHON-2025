@@ -3,310 +3,510 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Travel Planner - Pekan Tourism</title>
+    <title>AI Travel Planner - JomPekan</title>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
     <style>
-        :root {
-            --primary-color: #2196F3;
-            --secondary-color: #1976D2;
-            --background-color: #f5f6fa;
-            --text-color: #2c3e50;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        .container {
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-        }
-
-        /* Navigation styles (copied from other pages) */
-        .sidebar {
-            width: 100%;
-            background: white;
-            padding: 10px 20px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .logo h2 {
-            color: var(--primary-color);
-            padding: 5px 0;
-        }
-
-        .nav-links {
-            list-style: none;
-            display: flex;
-        }
-
-        .nav-links li {
-            display: flex;
-            align-items: center;
-            padding: 8px 15px;
-            margin: 0 3px;
-            border-radius: 6px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .nav-links li:hover, .nav-links li.active {
-            background: var(--primary-color);
-            color: white;
-        }
-
-        /* Main content styles */
-        .main-content {
-            padding: 30px 20px;
+        .planner-container {
             max-width: 1200px;
             margin: 0 auto;
-            width: 100%;
+            padding: var(--spacing-xl);
         }
 
         .planner-header {
             text-align: center;
-            margin-bottom: 40px;
+            margin-bottom: var(--spacing-2xl);
+            animation: fadeIn 0.5s ease-out;
         }
 
         .planner-header h1 {
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-            color: var(--text-color);
+            font-size: var(--font-size-3xl);
+            color: var(--primary-color);
+            margin-bottom: var(--spacing-sm);
         }
 
         .planner-grid {
             display: grid;
-            grid-template-columns: 1fr 2fr;
-            gap: 30px;
+            grid-template-columns: 350px 1fr;
+            gap: var(--spacing-xl);
+            animation: slideIn 0.5s ease-out;
         }
 
         .preferences-form {
-            background: white;
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            background: var(--surface-color);
+            padding: var(--spacing-xl);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-lg);
+            position: sticky;
+            top: 100px;
+            height: fit-content;
+        }
+
+        .preferences-form h2 {
+            color: var(--primary-color);
+            margin-bottom: var(--spacing-lg);
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
         }
 
         .form-group {
-            margin-bottom: 20px;
+            margin-bottom: var(--spacing-lg);
         }
 
         .form-group label {
             display: block;
-            margin-bottom: 8px;
+            margin-bottom: var(--spacing-xs);
             font-weight: 500;
-            color: var(--text-color);
+            color: var(--text-primary);
         }
 
-        .form-group input,
-        .form-group select {
+        .form-input, .form-select {
             width: 100%;
-            padding: 12px;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            font-size: 1rem;
+            padding: var(--spacing-md);
+            border: 2px solid #e0e0e0;
+            border-radius: var(--radius-md);
+            transition: var(--transition-normal);
+            font-size: var(--font-size-md);
+        }
+
+        .form-input:focus, .form-select:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 4px rgba(33, 150, 243, 0.1);
+        }
+
+        .interests-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: var(--spacing-sm);
+            margin-top: var(--spacing-sm);
+        }
+
+        .interest-item {
+            position: relative;
+            cursor: pointer;
+        }
+
+        .interest-item input {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+        }
+
+        .interest-label {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-xs);
+            padding: var(--spacing-sm);
+            background: var(--background-color);
+            border-radius: var(--radius-md);
+            transition: var(--transition-normal);
+        }
+
+        .interest-item input:checked + .interest-label {
+            background: var(--primary-color);
+            color: var(--text-light);
         }
 
         .generate-button {
-            background: var(--primary-color);
-            color: white;
-            border: none;
-            padding: 15px 30px;
-            border-radius: 8px;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: background 0.3s ease;
             width: 100%;
-            margin-top: 20px;
+            padding: var(--spacing-md);
+            background: var(--primary-color);
+            color: var(--text-light);
+            border: none;
+            border-radius: var(--radius-md);
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition-normal);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--spacing-sm);
         }
 
         .generate-button:hover {
-            background: var(--secondary-color);
+            background: var(--primary-dark);
+            transform: translateY(-2px);
         }
 
         .itinerary-display {
-            background: white;
-            border-radius: 15px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            background: var(--surface-color);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-lg);
             overflow: hidden;
         }
 
         .day-card {
-            padding: 20px;
+            padding: var(--spacing-xl);
             border-bottom: 1px solid #eee;
+            transition: var(--transition-normal);
         }
 
-        .day-card:last-child {
-            border-bottom: none;
+        .day-card:hover {
+            background: var(--background-color);
         }
 
         .day-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 15px;
+            margin-bottom: var(--spacing-lg);
         }
 
         .day-header h3 {
             color: var(--primary-color);
-            font-size: 1.2rem;
+            font-size: var(--font-size-xl);
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
         }
 
         .activity-item {
             display: flex;
             align-items: center;
-            padding: 10px;
+            padding: var(--spacing-md);
             background: var(--background-color);
-            border-radius: 8px;
-            margin-bottom: 10px;
+            border-radius: var(--radius-md);
+            margin-bottom: var(--spacing-sm);
+            transition: var(--transition-normal);
         }
 
-        .activity-item i {
-            margin-right: 10px;
-            color: var(--primary-color);
+        .activity-item:hover {
+            transform: translateX(10px);
+            box-shadow: var(--shadow-md);
         }
 
         .activity-time {
             font-weight: 500;
-            margin-right: 15px;
-            color: var(--text-color);
+            color: var(--primary-color);
+            min-width: 100px;
         }
 
-        @media (max-width: 768px) {
+        .activity-details {
+            flex-grow: 1;
+        }
+
+        .activity-title {
+            font-weight: 500;
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .activity-description {
+            color: var(--text-secondary);
+            font-size: var(--font-size-sm);
+        }
+
+        .activity-actions {
+            display: flex;
+            gap: var(--spacing-sm);
+        }
+
+        .action-button {
+            padding: var(--spacing-xs);
+            border: none;
+            background: none;
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: var(--transition-normal);
+        }
+
+        .action-button:hover {
+            color: var(--primary-color);
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: var(--spacing-2xl);
+            color: var(--text-secondary);
+        }
+
+        .empty-state i {
+            font-size: 48px;
+            color: var(--primary-light);
+            margin-bottom: var(--spacing-md);
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 1024px) {
             .planner-grid {
                 grid-template-columns: 1fr;
+            }
+
+            .preferences-form {
+                position: static;
             }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <!-- Navigation -->
-        <nav class="sidebar">
-            <div class="logo">
-                <h2>JomPekan</h2>
-            </div>
-            <ul class="nav-links">
-                <a href="index.html" style="text-decoration: none; color: inherit;">
-                    <li><i class="material-icons">home</i><span>Home</span></li>
-                </a>
-                <a href="attractions.html" style="text-decoration: none; color: inherit;">
-                    <li><i class="material-icons">place</i><span>View Attractions</span></li>
-                </a>
-                <a href="gallery.html" style="text-decoration: none; color: inherit;">
-                    <li><i class="material-icons">photo_library</i><span>Gallery</span></li>
-                </a>
-                <a href="wallet.html" style="text-decoration: none; color: inherit;">
-                    <li><i class="material-icons">account_balance_wallet</i><span>Wallet</span></li>
-                </a>
-                <a href="planner.html" style="text-decoration: none; color: inherit;">
-                    <li class="active"><i class="material-icons">event</i><span>Planner</span></li>
-                </a>
-                <a href="login.html" style="text-decoration: none; color: inherit;">
-                    <li><i class="material-icons">login</i><span>Log In</span></li>
-                </a>
-            </ul>
-        </nav>
+    <nav class="navbar">
+        <div class="logo">
+            <i class="material-icons">event</i>
+            <h2>JomPekan</h2>
+        </div>
+        <ul class="nav-links">
+            <a href="index.html">
+                <li>
+                    <i class="material-icons">home</i>
+                    <span>Home</span>
+                </li>
+            </a>
+            <a href="attractions.html">
+                <li>
+                    <i class="material-icons">place</i>
+                    <span>View Attractions</span>
+                </li>
+            </a>
+            <a href="gallery.html">
+                <li>
+                    <i class="material-icons">photo_library</i>
+                    <span>Gallery</span>
+                </li>
+            </a>
+            <a href="wallet.html">
+                <li>
+                    <i class="material-icons">account_balance_wallet</i>
+                    <span>Wallet</span>
+                </li>
+            </a>
+            <a href="planner.html">
+                <li class="active">
+                    <i class="material-icons">event</i>
+                    <span>Planner</span>
+                </li>
+            </a>
+            <a href="login.html">
+                <li>
+                    <i class="material-icons">login</i>
+                    <span>Log In</span>
+                </li>
+            </a>
+        </ul>
+    </nav>
 
-        <!-- Main Content -->
-        <main class="main-content">
-            <div class="planner-header">
-                <h1>AI Travel Planner</h1>
-                <p>Let us create the perfect Pekan itinerary for you</p>
-            </div>
+    <div class="planner-container">
+        <div class="planner-header">
+            <h1>AI Travel Planner</h1>
+            <p class="text-secondary">Let us create your perfect Pekan adventure</p>
+        </div>
 
-            <div class="planner-grid">
-                <!-- Preferences Form -->
-                <div class="preferences-form">
-                    <h2>Your Preferences</h2>
-                    <div class="form-group">
-                        <label>Trip Duration (Days)</label>
-                        <select>
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                            <option>5</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label>Start Date</label>
-                        <input type="date">
-                    </div>
-                    <div class="form-group">
-                        <label>Interests</label>
-                        <select multiple>
-                            <option>Historical Sites</option>
-                            <option>Cultural Activities</option>
-                            <option>Nature</option>
-                            <option>Food</option>
-                            <option>Shopping</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label>Budget Level</label>
-                        <select>
-                            <option>Budget Friendly</option>
-                            <option>Moderate</option>
-                            <option>Luxury</option>
-                        </select>
-                    </div>
-                    <button class="generate-button">
-                        <i class="material-icons">auto_awesome</i>
-                        Generate Itinerary
-                    </button>
+        <div class="planner-grid">
+            <div class="preferences-form">
+                <h2>
+                    <i class="material-icons">settings</i>
+                    Your Preferences
+                </h2>
+                <div class="form-group">
+                    <label for="duration">Trip Duration</label>
+                    <select id="duration" class="form-select">
+                        <option value="1">1 Day</option>
+                        <option value="2">2 Days</option>
+                        <option value="3">3 Days</option>
+                        <option value="4">4 Days</option>
+                        <option value="5">5 Days</option>
+                    </select>
                 </div>
 
-                <!-- Itinerary Display -->
-                <div class="itinerary-display">
-                    <div class="day-card">
-                        <div class="day-header">
-                            <h3>Day 1</h3>
-                            <span>Monday, May 15</span>
-                        </div>
-                        <div class="activity-item">
-                            <i class="material-icons">wb_sunny</i>
-                            <span class="activity-time">09:00 AM</span>
-                            <span>Visit Sultan Abu Bakar Museum</span>
-                        </div>
-                        <div class="activity-item">
-                            <i class="material-icons">restaurant</i>
-                            <span class="activity-time">12:30 PM</span>
-                            <span>Lunch at Local Restaurant</span>
-                        </div>
-                        <div class="activity-item">
-                            <i class="material-icons">mosque</i>
-                            <span class="activity-time">02:30 PM</span>
-                            <span>Sultan Ahmad Shah Mosque Tour</span>
-                        </div>
-                    </div>
+                <div class="form-group">
+                    <label for="startDate">Start Date</label>
+                    <input type="date" id="startDate" class="form-input">
+                </div>
 
-                    <div class="day-card">
-                        <div class="day-header">
-                            <h3>Day 2</h3>
-                            <span>Tuesday, May 16</span>
+                <div class="form-group">
+                    <label>Interests</label>
+                    <div class="interests-grid">
+                        <div class="interest-item">
+                            <input type="checkbox" id="historical" value="historical">
+                            <label for="historical" class="interest-label">
+                                <i class="material-icons">history</i>
+                                Historical
+                            </label>
                         </div>
-                        <div class="activity-item">
-                            <i class="material-icons">park</i>
-                            <span class="activity-time">10:00 AM</span>
-                            <span>Pekan Waterfront Visit</span>
+                        <div class="interest-item">
+                            <input type="checkbox" id="cultural" value="cultural">
+                            <label for="cultural" class="interest-label">
+                                <i class="material-icons">museum</i>
+                                Cultural
+                            </label>
                         </div>
-                        <div class="activity-item">
-                            <i class="material-icons">shopping_bag</i>
-                            <span class="activity-time">02:00 PM</span>
-                            <span>Shopping at Local Market</span>
+                        <div class="interest-item">
+                            <input type="checkbox" id="nature" value="nature">
+                            <label for="nature" class="interest-label">
+                                <i class="material-icons">landscape</i>
+                                Nature
+                            </label>
+                        </div>
+                        <div class="interest-item">
+                            <input type="checkbox" id="food" value="food">
+                            <label for="food" class="interest-label">
+                                <i class="material-icons">restaurant</i>
+                                Food
+                            </label>
+                        </div>
+                        <div class="interest-item">
+                            <input type="checkbox" id="shopping" value="shopping">
+                            <label for="shopping" class="interest-label">
+                                <i class="material-icons">shopping_bag</i>
+                                Shopping
+                            </label>
+                        </div>
+                        <div class="interest-item">
+                            <input type="checkbox" id="adventure" value="adventure">
+                            <label for="adventure" class="interest-label">
+                                <i class="material-icons">hiking</i>
+                                Adventure
+                            </label>
                         </div>
                     </div>
                 </div>
+
+                <button class="generate-button" onclick="generateItinerary()">
+                    <i class="material-icons">auto_awesome</i>
+                    Generate Itinerary
+                </button>
             </div>
-        </main>
+
+            <div class="itinerary-display" id="itineraryDisplay">
+                <div class="empty-state">
+                    <i class="material-icons">event_note</i>
+                    <h3>Your itinerary will appear here</h3>
+                    <p>Fill in your preferences and click "Generate Itinerary" to create your perfect Pekan adventure</p>
+                </div>
+            </div>
+        </div>
     </div>
+
+    <script>
+        function generateItinerary() {
+            const duration = document.getElementById('duration').value;
+            const startDate = document.getElementById('startDate').value;
+            const interests = Array.from(document.querySelectorAll('.interest-item input:checked'))
+                .map(input => input.value);
+
+            if (!startDate) {
+                alert('Please select a start date');
+                return;
+            }
+
+            if (interests.length === 0) {
+                alert('Please select at least one interest');
+                return;
+            }
+
+            // Show loading state
+            const itineraryDisplay = document.getElementById('itineraryDisplay');
+            itineraryDisplay.innerHTML = `
+                <div class="empty-state">
+                    <i class="material-icons">hourglass_empty</i>
+                    <h3>Creating your perfect itinerary...</h3>
+                    <p>Please wait while we craft your personalized Pekan adventure</p>
+                </div>
+            `;
+
+            // Simulate API call with timeout
+            setTimeout(() => {
+                // Sample itinerary data (replace with actual API call)
+                const itinerary = generateSampleItinerary(duration, interests);
+                displayItinerary(itinerary);
+            }, 2000);
+        }
+
+        function generateSampleItinerary(duration, interests) {
+            const activities = {
+                historical: [
+                    { time: '09:00', title: 'Sultan Abu Bakar Museum', description: 'Explore royal artifacts and historical exhibits' },
+                    { time: '14:00', title: 'Pahang Museum', description: 'Discover Pahang\'s rich cultural heritage' }
+                ],
+                cultural: [
+                    { time: '10:00', title: 'Sultan Abdullah Mosque', description: 'Visit this architectural marvel' },
+                    { time: '15:00', title: 'Traditional Craft Workshop', description: 'Learn local crafts and traditions' }
+                ],
+                nature: [
+                    { time: '08:00', title: 'Taman Tasik Sultan Abu Bakar', description: 'Morning walk in the beautiful lake garden' },
+                    { time: '16:00', title: 'Lagenda Beach', description: 'Enjoy the sunset at the pristine beach' }
+                ],
+                food: [
+                    { time: '12:00', title: 'Local Food Tour', description: 'Taste authentic Pekan cuisine' },
+                    { time: '19:00', title: 'Night Market', description: 'Experience local street food' }
+                ]
+            };
+
+            const itinerary = [];
+            for (let day = 1; day <= duration; day++) {
+                const dayActivities = [];
+                interests.forEach(interest => {
+                    if (activities[interest]) {
+                        dayActivities.push(...activities[interest]);
+                    }
+                });
+                itinerary.push({
+                    day: day,
+                    activities: dayActivities.sort((a, b) => a.time.localeCompare(b.time))
+                });
+            }
+
+            return itinerary;
+        }
+
+        function displayItinerary(itinerary) {
+            const itineraryDisplay = document.getElementById('itineraryDisplay');
+            itineraryDisplay.innerHTML = itinerary.map(day => `
+                <div class="day-card">
+                    <div class="day-header">
+                        <h3>
+                            <i class="material-icons">calendar_today</i>
+                            Day ${day.day}
+                        </h3>
+                    </div>
+                    ${day.activities.map(activity => `
+                        <div class="activity-item">
+                            <div class="activity-time">
+                                <i class="material-icons">schedule</i>
+                                ${activity.time}
+                            </div>
+                            <div class="activity-details">
+                                <div class="activity-title">${activity.title}</div>
+                                <div class="activity-description">${activity.description}</div>
+                            </div>
+                            <div class="activity-actions">
+                                <button class="action-button" title="Save to favorites">
+                                    <i class="material-icons">favorite_border</i>
+                                </button>
+                                <button class="action-button" title="Get directions">
+                                    <i class="material-icons">directions</i>
+                                </button>
+                            </div>
+                        </div>
+                    `).join('')}
+                </div>
+            `).join('');
+
+            // Add event listeners to action buttons
+            document.querySelectorAll('.action-button').forEach(button => {
+                button.addEventListener('click', function() {
+                    const action = this.title;
+                    const activityTitle = this.closest('.activity-item').querySelector('.activity-title').textContent;
+                    console.log(`${action} for ${activityTitle}`);
+                    // Add your action handling logic here
+                });
+            });
+        }
+
+        // Set minimum date to today
+        const today = new Date().toISOString().split('T')[0];
+        document.getElementById('startDate').min = today;
+    </script>
 </body>
 </html>

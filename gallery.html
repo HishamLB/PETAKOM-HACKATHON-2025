@@ -5,141 +5,47 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pekan Gallery</title>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <style>
-        :root {
-            --primary-color: #2196F3;
-            --secondary-color: #1976D2;
-            --background-color: #f5f6fa;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        body {
-            background-color: var(--background-color);
-        }
-
-        .sidebar {
-            width: 100%;
-            background: white;
-            padding: 10px 20px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .logo h2 {
-            color: var(--primary-color);
-            padding: 5px 0;
-        }
-
-        .nav-links {
-            list-style: none;
-            display: flex;
-            margin: 0;
-        }
-
-        .nav-links li {
-            display: flex;
-            align-items: center;
-            padding: 8px 15px;
-            margin: 0 3px;
-            border-radius: 6px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .nav-links li:hover, .nav-links li.active {
-            background: var(--primary-color);
-            color: white;
-        }
-
-        .nav-links li i {
-            margin-right: 10px;
-        }
-
-        .gallery-header {
-            font-size: 2.5rem;
-            color: #2c3e50;
-            margin: 40px 20px 20px;
-        }
-
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr); /* Always 4 columns */
-            gap: 20px;
-            padding: 20px;
-        }
-
-        .gallery-item {
-            background: white;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
-        }
-
-        .gallery-item:hover {
-            transform: scale(1.02);
-        }
-
-        .gallery-item img {
-            width: 100%;
-            height: 300px;
-            object-fit: cover;
-        }
-
-        .gallery-caption {
-            padding: 10px;
-            color: #2c3e50;
-            font-weight: 500;
-            font-size: 1rem;
-            text-align: center;
-        }
-    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <nav class="sidebar">
+    <nav class="navbar">
         <div class="logo">
+            <i class="material-icons">photo_library</i>
             <h2>JomPekan</h2>
         </div>
         <ul class="nav-links">
-            <a href="index.html" style="text-decoration: none; color: inherit;">
+            <a href="index.html">
                 <li>
                     <i class="material-icons">home</i>
                     <span>Home</span>
                 </li>
             </a>
-            <a href="attractions.html" style="text-decoration: none; color: inherit;">
+            <a href="attractions.html">
                 <li>
                     <i class="material-icons">place</i>
                     <span>View Attractions</span>
                 </li>
             </a>
-            <a href="gallery.html" style="text-decoration: none; color: inherit;">
+            <a href="gallery.html">
                 <li class="active">
                     <i class="material-icons">photo_library</i>
                     <span>Gallery</span>
                 </li>
             </a>
-            <a href="wallet.html" style="text-decoration: none; color: inherit;">
+            <a href="wallet.html">
                 <li>
                     <i class="material-icons">account_balance_wallet</i>
                     <span>Wallet</span>
                 </li>
             </a>
-            <a href="planner.html" style="text-decoration: none; color: inherit;">
+            <a href="planner.html">
                 <li>
                     <i class="material-icons">event</i>
                     <span>Planner</span>
                 </li>
             </a>
-            <a href="login.html" style="text-decoration: none; color: inherit;">
+            <a href="login.html">
                 <li>
                     <i class="material-icons">login</i>
                     <span>Log In</span>
@@ -148,46 +54,153 @@
         </ul>
     </nav>
 
-    <h1 class="gallery-header">Pekan Gallery</h1>
+    <div class="container">
+        <h1 class="text-center mt-4 mb-4">Pekan Gallery</h1>
+        
+        <div class="gallery-controls mb-4">
+            <div class="search-container">
+                <i class="material-icons search-icon">search</i>
+                <input type="text" class="form-input" placeholder="Search images...">
+            </div>
+            <div class="filter-buttons mt-2">
+                <button class="btn btn-outline active" data-filter="all">
+                    <i class="material-icons">apps</i>
+                    All
+                </button>
+                <button class="btn btn-outline" data-filter="mosque">
+                    <i class="material-icons">mosque</i>
+                    Mosques
+                </button>
+                <button class="btn btn-outline" data-filter="nature">
+                    <i class="material-icons">landscape</i>
+                    Nature
+                </button>
+                <button class="btn btn-outline" data-filter="museum">
+                    <i class="material-icons">museum</i>
+                    Museums
+                </button>
+            </div>
+        </div>
 
-    <div class="gallery-grid">
-        <div class="gallery-item">
-            <img src="src/sultanmosque.png" alt="Sultan Mosque">
-            <div class="gallery-caption">Sultan Abdullah Mosque</div>
+        <div class="gallery-grid">
+            <div class="gallery-item" data-category="mosque">
+                <img src="src/sultanmosque.png" alt="Sultan Mosque">
+                <div class="gallery-caption">
+                    <h3>Sultan Abdullah Mosque</h3>
+                    <p>Historical mosque with stunning architecture</p>
+                </div>
+            </div>
+            <div class="gallery-item" data-category="mosque">
+                <img src="src/sultanahmad.jpg" alt="Sultan Ahmad Shah Mosque">
+                <div class="gallery-caption">
+                    <h3>Sultan Ahmad Shah Mosque</h3>
+                    <p>Iconic mosque in Pekan</p>
+                </div>
+            </div>
+            <div class="gallery-item" data-category="nature">
+                <img src="src/pekan-waterfront.jpg" alt="Pekan Waterfront">
+                <div class="gallery-caption">
+                    <h3>Pekan Waterfront</h3>
+                    <p>Scenic riverside area</p>
+                </div>
+            </div>
+            <div class="gallery-item" data-category="museum">
+                <img src="src/sultanabubakr.jpeg" alt="Sultan Abu Bakar Museum">
+                <div class="gallery-caption">
+                    <h3>Sultan Abu Bakar Museum</h3>
+                    <p>Historical royal museum</p>
+                </div>
+            </div>
+            <div class="gallery-item" data-category="nature">
+                <img src="src/tamantasikabubakar.jpg" alt="Taman Tasik">
+                <div class="gallery-caption">
+                    <h3>Taman Tasik Sultan Abu Bakar</h3>
+                    <p>Beautiful lakeside park</p>
+                </div>
+            </div>
+            <div class="gallery-item" data-category="nature">
+                <img src="src/lagendabeach.jpg" alt="Lagenda Beach">
+                <div class="gallery-caption">
+                    <h3>Lagenda Beach</h3>
+                    <p>Pristine beach with crystal clear waters</p>
+                </div>
+            </div>
+            <div class="gallery-item" data-category="museum">
+                <img src="src/muziumpahang.jpg" alt="Pahang Museum">
+                <div class="gallery-caption">
+                    <h3>Pahang Museum</h3>
+                    <p>Cultural heritage museum</p>
+                </div>
+            </div>
+            <div class="gallery-item" data-category="hotel">
+                <img src="src/ancasaroyale.jpg" alt="Ancasa Royale">
+                <div class="gallery-caption">
+                    <h3>Ancasa Royale</h3>
+                    <p>Luxury hotel in Pekan</p>
+                </div>
+            </div>
+            <div class="gallery-item" data-category="nature">
+                <img src="src/blackjewel.jpg" alt="Black Jewel">
+                <div class="gallery-caption">
+                    <h3>Black Water Jewel</h3>
+                    <p>Natural wonder of Pekan</p>
+                </div>
+            </div>
         </div>
-        <div class="gallery-item">
-            <img src="src/sultanahmad.jpg" alt="Sultan Ahmad Shah Mosque">
-            <div class="gallery-caption">Sultan Ahmad Shah Mosque</div>
-        </div>
-        <div class="gallery-item">
-            <img src="src/pekan-waterfront.jpg" alt="Pekan Waterfront">
-            <div class="gallery-caption">Pekan Waterfront</div>
-        </div>
-        <div class="gallery-item">
-            <img src="src/sultanabubakr.jpeg" alt="Sultan Abu Bakar Museum">
-            <div class="gallery-caption">Sultan Abu Bakar Museum</div>
-        </div>
-        <div class="gallery-item">
-            <img src="src/tamantasikabubakar.jpg" alt="Taman Tasik">
-            <div class="gallery-caption">Taman Tasik Sultan Abu Bakar</div>
-        </div>
-        <div class="gallery-item">
-            <img src="src/lagendabeach.jpg" alt="lagendabeach">
-            <div class="gallery-caption">Lagenda Beach</div>
-        </div>
-        <div class="gallery-item">
-            <img src="src/muziumpahang.jpg" alt="Taman Tasik">
-            <div class="gallery-caption">Pahang Muzium</div>
-        </div>
-        <div class="gallery-item">
-            <img src="src/ancasaroyale.jpg" alt="Ancasa Royale">
-            <div class="gallery-caption">Ancasa Royale</div>
-        </div>
-        <div class="gallery-item">
-            <img src="src/blackjewel.jpg" alt="Black Jewel">
-            <div class="gallery-caption">Black Water Jewel</div>
-        </div>
-        <!-- Add more items as needed -->
     </div>
+
+    <script>
+        const filterButtons = document.querySelectorAll('.filter-buttons .btn');
+        const galleryItems = document.querySelectorAll('.gallery-item');
+        const searchInput = document.querySelector('.search-input');
+
+        // Filter functionality
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active class from all buttons
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                // Add active class to clicked button
+                button.classList.add('active');
+
+                const filter = button.dataset.filter;
+                filterGallery(filter);
+            });
+        });
+
+        // Search functionality
+        searchInput.addEventListener('input', (e) => {
+            const searchTerm = e.target.value.toLowerCase();
+            filterGallery('all', searchTerm);
+        });
+
+        function filterGallery(filter, searchTerm = '') {
+            galleryItems.forEach(item => {
+                const category = item.dataset.category;
+                const title = item.querySelector('h3').textContent.toLowerCase();
+                const description = item.querySelector('p').textContent.toLowerCase();
+                
+                const matchesFilter = filter === 'all' || category === filter;
+                const matchesSearch = !searchTerm || 
+                    title.includes(searchTerm) || 
+                    description.includes(searchTerm);
+
+                if (matchesFilter && matchesSearch) {
+                    item.style.display = 'block';
+                    item.classList.add('fade-in');
+                } else {
+                    item.style.display = 'none';
+                    item.classList.remove('fade-in');
+                }
+            });
+        }
+
+        // Image loading animation
+        galleryItems.forEach(item => {
+            const img = item.querySelector('img');
+            img.addEventListener('load', () => {
+                item.classList.add('fade-in');
+            });
+        });
+    </script>
 </body>
 </html>
