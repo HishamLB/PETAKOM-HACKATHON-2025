@@ -183,9 +183,99 @@
             height: 20px;
             opacity: 0.7;
         }
+
+        .sidebar {
+            width: 100%; /* changed from var(--sidebar-width) */
+            background: white;
+            padding: 10px 20px; /* reduced padding */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* shadow now at bottom */
+            display: flex;          /* added for horizontal layout */
+            align-items: center;    /* center logo and nav */
+            justify-content: space-between; /* separate logo & nav */
+        }
+
+        .logo h2 {
+            color: var(--primary-color);
+            margin-bottom: 0; /* removed bottom margin */
+            padding: 5px 0; /* reduced padding */
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;  /* changed from block to flex row */
+            margin: 0;      /* reset default margin */
+        }
+
+        .nav-links li {
+            display: flex;
+            align-items: center;
+            padding: 8px 15px; /* reduced padding */
+            margin: 0 3px; /* reduced margin */
+            border-radius: 6px; /* slightly smaller radius */
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links li:hover, .nav-links li.active {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .nav-links li i {
+            margin-right: 10px;
+        }
     </style>
 </head>
 <body>
+    <nav class="sidebar">
+    <div class="logo">
+    <h2>JomPekan</h2>
+        </div>
+        <ul class="nav-links">
+            <a href="index.html" style="text-decoration: none; color: inherit;">
+            <li>
+                <i class="material-icons">home</i>
+                <span>Home</span>
+            </li>
+            </a>
+
+            <a href="attractions.html" style="text-decoration: none; color: inherit;">
+            <li class="active">
+                <i class="material-icons">place</i>
+                <span>View Attractions</span>
+            </li>
+            </a>
+
+            <a href="gallery.html" style="text-decoration: none; color: inherit;">
+            <li>
+                <i class="material-icons">photo_library</i>
+                <span>Gallery</span>
+            </li>
+            </a>
+
+            <a href="wallet.html" style="text-decoration: none; color: inherit;">
+            <li>
+                <i class="material-icons">account_balance_wallet</i>
+                <span>Wallet</span>
+            </li>
+            </a>
+
+            <a href="planner.html" style="text-decoration: none; color: inherit;">
+            <li>
+                <i class="material-icons">event</i>
+                <span>Planner</span>
+            </li>
+            </a>
+
+            <a href="login.html" style="text-decoration: none; color: inherit;">
+            <li>
+                <i class="material-icons">login</i>
+                <span>Log In</span>
+            </li>
+            </a>
+        </ul>
+        </nav>
+
     <h1 class="explore-header">Explore Pekan</h1>
     
     <div class="sort-container">
