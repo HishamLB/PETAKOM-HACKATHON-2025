@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Travel Planner - Pekan Tourism</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #2196F3;
+            --secondary-color: #1976D2;
+            --background-color: #f5f6fa;
+            --text-color: #2c3e50;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* Navigation styles (copied from other pages) */
+        .sidebar {
+            width: 100%;
+            background: white;
+            padding: 10px 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo h2 {
+            color: var(--primary-color);
+            padding: 5px 0;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+        }
+
+        .nav-links li {
+            display: flex;
+            align-items: center;
+            padding: 8px 15px;
+            margin: 0 3px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links li:hover, .nav-links li.active {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        /* Main content styles */
+        .main-content {
+            padding: 30px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .planner-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .planner-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            color: var(--text-color);
+        }
+
+        .planner-grid {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 30px;
+        }
+
+        .preferences-form {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--text-color);
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+
+        .generate-button {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 8px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background 0.3s ease;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        .generate-button:hover {
+            background: var(--secondary-color);
+        }
+
+        .itinerary-display {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .day-card {
+            padding: 20px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .day-card:last-child {
+            border-bottom: none;
+        }
+
+        .day-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .day-header h3 {
+            color: var(--primary-color);
+            font-size: 1.2rem;
+        }
+
+        .activity-item {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            background: var(--background-color);
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+
+        .activity-item i {
+            margin-right: 10px;
+            color: var(--primary-color);
+        }
+
+        .activity-time {
+            font-weight: 500;
+            margin-right: 15px;
+            color: var(--text-color);
+        }
+
+        @media (max-width: 768px) {
+            .planner-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Navigation -->
+        <nav class="sidebar">
+            <div class="logo">
+                <h2>JomPekan</h2>
+            </div>
+            <ul class="nav-links">
+                <a href="index.html" style="text-decoration: none; color: inherit;">
+                    <li><i class="material-icons">home</i><span>Home</span></li>
+                </a>
+                <a href="attractions.html" style="text-decoration: none; color: inherit;">
+                    <li><i class="material-icons">place</i><span>View Attractions</span></li>
+                </a>
+                <a href="gallery.html" style="text-decoration: none; color: inherit;">
+                    <li><i class="material-icons">photo_library</i><span>Gallery</span></li>
+                </a>
+                <a href="wallet.html" style="text-decoration: none; color: inherit;">
+                    <li><i class="material-icons">account_balance_wallet</i><span>Wallet</span></li>
+                </a>
+                <a href="planner.html" style="text-decoration: none; color: inherit;">
+                    <li class="active"><i class="material-icons">event</i><span>Planner</span></li>
+                </a>
+                <a href="login.html" style="text-decoration: none; color: inherit;">
+                    <li><i class="material-icons">login</i><span>Log In</span></li>
+                </a>
+            </ul>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="planner-header">
+                <h1>AI Travel Planner</h1>
+                <p>Let us create the perfect Pekan itinerary for you</p>
+            </div>
+
+            <div class="planner-grid">
+                <!-- Preferences Form -->
+                <div class="preferences-form">
+                    <h2>Your Preferences</h2>
+                    <div class="form-group">
+                        <label>Trip Duration (Days)</label>
+                        <select>
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Start Date</label>
+                        <input type="date">
+                    </div>
+                    <div class="form-group">
+                        <label>Interests</label>
+                        <select multiple>
+                            <option>Historical Sites</option>
+                            <option>Cultural Activities</option>
+                            <option>Nature</option>
+                            <option>Food</option>
+                            <option>Shopping</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Budget Level</label>
+                        <select>
+                            <option>Budget Friendly</option>
+                            <option>Moderate</option>
+                            <option>Luxury</option>
+                        </select>
+                    </div>
+                    <button class="generate-button">
+                        <i class="material-icons">auto_awesome</i>
+                        Generate Itinerary
+                    </button>
+                </div>
+
+                <!-- Itinerary Display -->
+                <div class="itinerary-display">
+                    <div class="day-card">
+                        <div class="day-header">
+                            <h3>Day 1</h3>
+                            <span>Monday, May 15</span>
+                        </div>
+                        <div class="activity-item">
+                            <i class="material-icons">wb_sunny</i>
+                            <span class="activity-time">09:00 AM</span>
+                            <span>Visit Sultan Abu Bakar Museum</span>
+                        </div>
+                        <div class="activity-item">
+                            <i class="material-icons">restaurant</i>
+                            <span class="activity-time">12:30 PM</span>
+                            <span>Lunch at Local Restaurant</span>
+                        </div>
+                        <div class="activity-item">
+                            <i class="material-icons">mosque</i>
+                            <span class="activity-time">02:30 PM</span>
+                            <span>Sultan Ahmad Shah Mosque Tour</span>
+                        </div>
+                    </div>
+
+                    <div class="day-card">
+                        <div class="day-header">
+                            <h3>Day 2</h3>
+                            <span>Tuesday, May 16</span>
+                        </div>
+                        <div class="activity-item">
+                            <i class="material-icons">park</i>
+                            <span class="activity-time">10:00 AM</span>
+                            <span>Pekan Waterfront Visit</span>
+                        </div>
+                        <div class="activity-item">
+                            <i class="material-icons">shopping_bag</i>
+                            <span class="activity-time">02:00 PM</span>
+                            <span>Shopping at Local Market</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

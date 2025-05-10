@@ -171,89 +171,43 @@
             background-color: var(--secondary-color);
         }
 
-        /* Dashboard Content Styles */
-        .dashboard-content {
-            padding: 20px;
+        /* Fancy Header Styles */
+        .fancy-header {
+            text-align: center;
+            padding: 60px 20px;
+            margin-bottom: 40px;
+            position: relative;
         }
 
-        .dashboard-content h1 {
-            margin-bottom: 30px;
+        .fancy-header h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            background: linear-gradient(45deg, #2196F3, #00BCD4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
         }
 
-        .stats-cards {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            margin-bottom: 30px;
+        .fancy-header h1::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(45deg, #2196F3, #00BCD4);
+            border-radius: 2px;
         }
 
-        .card {
-            background: white;
-            padding: 20px;
-            border-radius: 12px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
-
-        .card h3 {
+        .fancy-header p {
+            font-size: 1.2rem;
             color: #666;
-            font-size: 0.9rem;
-            margin-bottom: 10px;
-        }
-
-        .card .number {
-            font-size: 1.8rem;
-            font-weight: bold;
-            margin-bottom: 10px;
-        }
-
-        .card .growth {
-            font-size: 0.9rem;
-        }
-
-        .growth.positive {
-            color: #4CAF50;
-        }
-
-        /* Recent Activities Styles */
-        .recent-activities {
-            background: white;
-            padding: 20px;
-            border-radius: 12px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
-
-        .recent-activities h2 {
-            margin-bottom: 20px;
-        }
-
-        .activity-item {
-            display: flex;
-            align-items: center;
-            padding: 15px;
-            border-bottom: 1px solid #eee;
-        }
-
-        .activity-item i {
-            color: var(--primary-color);
-            margin-right: 15px;
-        }
-
-        .activity-details {
-            flex: 1;
-        }
-
-        .activity-details h4 {
-            margin-bottom: 5px;
-        }
-
-        .activity-details p {
-            color: #666;
-            font-size: 0.9rem;
-        }
-
-        .time {
-            color: #666;
-            font-size: 0.8rem;
+            max-width: 600px;
+            margin: 25px auto 0;
+            line-height: 1.6;
         }
 
         /* Responsive Design */
@@ -274,10 +228,6 @@
 
             .nav-links li {
                 white-space: nowrap;
-            }
-
-            .stats-cards {
-                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -347,49 +297,142 @@
 
             <!-- Dashboard Content -->
             <div class="dashboard-content">
-                <h1>Featured Attractions</h1>
+                <div class="fancy-header">
+                    <h1>Experience Pekan Like Never Before</h1>
+                    <p>Your smart travel companion for exploring the Royal Town of Pahang</p>
+                </div>
                 
-                <!-- Stats Cards - Repurposed for Attractions -->
-                <div class="stats-cards">
-                    <div class="card">
-                        <h3>Historical Sites</h3>
-                        <p class="number">15</p>
-                        <p class="status">Royal Heritage</p>
+                <!-- Feature Showcase -->
+                <div class="feature-cards">
+                    <div class="feature-card ai-planner">
+                        <div class="feature-icon">
+                            <i class="material-icons">auto_awesome</i>
+                        </div>
+                        <div class="feature-content">
+                            <h3>AI Travel Planner</h3>
+                            <p>Let our smart AI create the perfect itinerary based on your preferences and interests</p>
+                            <ul class="feature-list">
+                                <li><i class="material-icons">check_circle</i> Personalized schedules</li>
+                                <li><i class="material-icons">check_circle</i> Local insights</li>
+                                <li><i class="material-icons">check_circle</i> Smart timing</li>
+                            </ul>
+                            <a href="planner.html" class="feature-cta">Plan Your Trip</a>
+                        </div>
                     </div>
-                    <div class="card">
-                        <h3>Local Cuisine</h3>
-                        <p class="number">50+</p>
-                        <p class="status">Authentic Dishes</p>
+
+                    <div class="feature-card digital-wallet">
+                        <div class="feature-icon">
+                            <i class="material-icons">account_balance_wallet</i>
+                        </div>
+                        <div class="feature-content">
+                            <h3>Digital Wallet</h3>
+                            <p>Keep all your bookings, tickets, and passes in one secure place</p>
+                            <ul class="feature-list">
+                                <li><i class="material-icons">check_circle</i> Easy access</li>
+                                <li><i class="material-icons">check_circle</i> Quick booking</li>
+                                <li><i class="material-icons">check_circle</i> Paperless travel</li>
+                            </ul>
+                            <a href="wallet.html" class="feature-cta">Open Wallet</a>
+                        </div>
                     </div>
-                    <div class="card">
-                        <h3>Cultural Events</h3>
-                        <p class="number">12</p>
-                        <p class="status">Monthly</p>
+
+                    <div class="feature-card gallery-showcase">
+                        <div class="feature-icon">
+                            <i class="material-icons">photo_library</i>
+                        </div>
+                        <div class="feature-content">
+                            <h3>Interactive Gallery</h3>
+                            <p>Explore beautiful photographs and virtual tours of Pekan's attractions</p>
+                            <ul class="feature-list">
+                                <li><i class="material-icons">check_circle</i> HD Photography</li>
+                                <li><i class="material-icons">check_circle</i> 360° Views</li>
+                                <li><i class="material-icons">check_circle</i> User stories</li>
+                            </ul>
+                            <a href="gallery.html" class="feature-cta">View Gallery</a>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Recent Activities - Repurposed for Upcoming Events -->
-                <div class="recent-activities">
-                    <h2>Upcoming Events</h2>
-                    <div class="activity-list">
-                        <div class="activity-item">
-                            <i class="material-icons">event_available</i>
-                            <div class="activity-details">
-                                <h4>Cultural Festival Added</h4>
-                                <p>New event scheduled for next month</p>
-                            </div>
-                            <span class="time">2h ago</span>
-                        </div>
-                        <div class="activity-item">
-                            <i class="material-icons">place</i>
-                            <div class="activity-details">
-                                <h4>New Attraction Listed</h4>
-                                <p>Waterfront Park added to attractions</p>
-                            </div>
-                            <span class="time">5h ago</span>
-                        </div>
-                    </div>
-                </div>
+                <style>
+                    .feature-cards {
+                        display: grid;
+                        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+                        gap: 30px;
+                        margin-top: 40px;
+                    }
+
+                    .feature-card {
+                        background: white;
+                        border-radius: 20px;
+                        padding: 30px;
+                        box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+                        transition: transform 0.3s ease;
+                    }
+
+                    .feature-card:hover {
+                        transform: translateY(-5px);
+                    }
+
+                    .feature-icon {
+                        background: var(--primary-color);
+                        width: 60px;
+                        height: 60px;
+                        border-radius: 50%;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        margin-bottom: 20px;
+                    }
+
+                    .feature-icon i {
+                        color: white;
+                        font-size: 30px;
+                    }
+
+                    .feature-content h3 {
+                        font-size: 1.5rem;
+                        margin-bottom: 15px;
+                        color: #2c3e50;
+                    }
+
+                    .feature-content p {
+                        color: #666;
+                        margin-bottom: 20px;
+                        line-height: 1.6;
+                    }
+
+                    .feature-list {
+                        list-style: none;
+                        margin-bottom: 25px;
+                    }
+
+                    .feature-list li {
+                        display: flex;
+                        align-items: center;
+                        margin-bottom: 10px;
+                        color: #666;
+                    }
+
+                    .feature-list i {
+                        color: #4CAF50;
+                        margin-right: 10px;
+                        font-size: 1.2rem;
+                    }
+
+                    .feature-cta {
+                        display: inline-block;
+                        padding: 12px 25px;
+                        background: var(--primary-color);
+                        color: white;
+                        text-decoration: none;
+                        border-radius: 25px;
+                        transition: background 0.3s ease;
+                    }
+
+                    .feature-cta:hover {
+                        background: var(--secondary-color);
+                    }
+                </style>
             </div>
         </main>
     </div>
