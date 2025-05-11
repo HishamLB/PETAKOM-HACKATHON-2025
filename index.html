@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pekan Tourism Dashboard</title>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
     <style>
         :root {
             --primary-color: #2196F3;
@@ -34,33 +36,33 @@
 
         /* Sidebar Styles */
         .sidebar {
-            width: 100%; /* changed from var(--sidebar-width) */
+            width: 100%;
             background: white;
-            padding: 10px 20px; /* reduced padding */
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* shadow now at bottom */
-            display: flex;          /* added for horizontal layout */
-            align-items: center;    /* center logo and nav */
-            justify-content: space-between; /* separate logo & nav */
+            padding: 10px 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
         }
 
         .logo h2 {
             color: var(--primary-color);
-            margin-bottom: 0; /* removed bottom margin */
-            padding: 5px 0; /* reduced padding */
+            margin-bottom: 0;
+            padding: 5px 0;
         }
 
         .nav-links {
             list-style: none;
-            display: flex;  /* changed from block to flex row */
-            margin: 0;      /* reset default margin */
+            display: flex;
+            margin: 0;
         }
 
         .nav-links li {
             display: flex;
             align-items: center;
-            padding: 8px 15px; /* reduced padding */
-            margin: 0 3px; /* reduced margin */
-            border-radius: 6px; /* slightly smaller radius */
+            padding: 8px 15px;
+            margin: 0 3px;
+            border-radius: 6px;
             cursor: pointer;
             transition: all 0.3s ease;
         }
@@ -126,13 +128,21 @@
             height: 600px;
             position: relative;
             overflow: hidden;
-            margin-bottom: 40px;
+            margin-bottom: 0;
         }
 
         .hero-section img {
             width: 100%;
             height: 100%;
             object-fit: cover;
+            display: block;
+        }
+
+        .hero-gradient {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(120deg, rgba(30,76,135,0.5) 0%, rgba(33,150,243,0.3) 100%);
+            z-index: 1;
         }
 
         .hero-content {
@@ -142,18 +152,22 @@
             transform: translate(-50%, -50%);
             text-align: center;
             color: white;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.4);
             width: 80%;
+            z-index: 2;
         }
 
         .hero-content h1 {
             font-size: 3.5rem;
             margin-bottom: 20px;
+            text-shadow: 0 4px 24px rgba(33,150,243,0.25), 2px 2px 8px rgba(0,0,0,0.4);
+            letter-spacing: 2px;
         }
 
         .hero-content p {
             font-size: 1.5rem;
             margin-bottom: 30px;
+            letter-spacing: 1px;
         }
 
         .cta-button {
@@ -164,11 +178,29 @@
             border-radius: 25px;
             font-size: 1.2rem;
             cursor: pointer;
-            transition: background-color 0.3s ease;
+            transition: background-color 0.3s, box-shadow 0.3s, transform 0.2s;
+            box-shadow: 0 4px 16px rgba(33,150,243,0.15);
+            position: relative;
+            overflow: hidden;
+            animation: pulse 1.8s infinite;
         }
-
         .cta-button:hover {
             background-color: var(--secondary-color);
+            box-shadow: 0 8px 32px rgba(33,150,243,0.25);
+            transform: translateY(-2px) scale(1.04);
+        }
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(33,150,243,0.3); }
+            70% { box-shadow: 0 0 0 16px rgba(33,150,243,0); }
+            100% { box-shadow: 0 0 0 0 rgba(33,150,243,0); }
+        }
+
+        /* SVG Wave Divider */
+        .wave-divider {
+            display: block;
+            width: 100%;
+            height: 60px;
+            margin-bottom: -10px;
         }
 
         /* Fancy Header Styles */
@@ -188,6 +220,8 @@
             margin-bottom: 15px;
             position: relative;
             display: inline-block;
+            letter-spacing: 3px;
+            text-shadow: 0 2px 12px rgba(33,150,243,0.08);
         }
 
         .fancy-header h1::after {
@@ -233,67 +267,68 @@
     </style>
 </head>
 <body>
-    <div class="container">
-        <nav class="sidebar">
-    <div class="logo">
-    <h2>JomPekan</h2>
+    <nav class="sidebar">
+        <div class="logo">
+            <h2>JomPekan</h2>
         </div>
         <ul class="nav-links">
             <a href="index.html" style="text-decoration: none; color: inherit;">
-            <li class="active">
-                <i class="material-icons">home</i>
-                <span>Home</span>
-            </li>
+                <li class="active">
+                    <i class="material-icons">home</i>
+                    <span>Home</span>
+                </li>
             </a>
 
             <a href="attractions.html" style="text-decoration: none; color: inherit;">
-            <li>
-                <i class="material-icons">place</i>
-                <span>View Attractions</span>
-            </li>
+                <li>
+                    <i class="material-icons">place</i>
+                    <span>View Attractions</span>
+                </li>
             </a>
 
             <a href="gallery.html" style="text-decoration: none; color: inherit;">
-            <li>
-                <i class="material-icons">photo_library</i>
-                <span>Gallery</span>
-            </li>
+                <li>
+                    <i class="material-icons">photo_library</i>
+                    <span>Gallery</span>
+                </li>
             </a>
 
             <a href="wallet.html" style="text-decoration: none; color: inherit;">
-            <li>
-                <i class="material-icons">account_balance_wallet</i>
-                <span>Wallet</span>
-            </li>
+                <li>
+                    <i class="material-icons">account_balance_wallet</i>
+                    <span>Wallet</span>
+                </li>
             </a>
 
             <a href="planner.html" style="text-decoration: none; color: inherit;">
-            <li>
-                <i class="material-icons">event</i>
-                <span>Planner</span>
-            </li>
+                <li>
+                    <i class="material-icons">event</i>
+                    <span>Planner</span>
+                </li>
             </a>
 
             <a href="login.html" style="text-decoration: none; color: inherit;">
-            <li>
-                <i class="material-icons">login</i>
-                <span>Log In</span>
-            </li>
+                <li>
+                    <i class="material-icons">login</i>
+                    <span>Log In</span>
+                </li>
             </a>
         </ul>
-        </nav>
-
+    </nav>
+    <div class="container" style="width: 100%; max-width: none; margin: 0; padding: 0;">
         <!-- Main Content -->
         <main class="main-content">
             <!-- Hero Section -->
             <section class="hero-section">
                 <img src="src/sultanmosque.png" alt="Pekan Tourism">
+                <div class="hero-gradient"></div>
                 <div class="hero-content">
                     <h1>Discover Pekan's Beauty</h1>
                     <p>Experience the rich heritage and natural wonders of Malaysia's Royal Town</p>
                     <button class="cta-button">Explore Now</button>
                 </div>
             </section>
+            <svg class="wave-divider" viewBox="0 0 1440 60" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill="#f5f6fa" d="M0,0 C480,60 960,0 1440,60 L1440,60 L0,60 Z"></path></svg>
 
             <!-- Dashboard Content -->
             <div class="dashboard-content">
@@ -362,17 +397,17 @@
                     }
 
                     .feature-card {
-                        background: white;
+                        background: linear-gradient(135deg, #f5fafd 60%, #e3f2fd 100%);
                         border-radius: 20px;
                         padding: 30px;
-                        box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-                        transition: transform 0.3s ease;
+                        box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+                        transition: transform 0.3s, box-shadow 0.3s;
+                        position: relative;
                     }
-
                     .feature-card:hover {
-                        transform: translateY(-5px);
+                        transform: translateY(-8px) scale(1.03);
+                        box-shadow: 0 8px 32px rgba(33,150,243,0.15);
                     }
-
                     .feature-icon {
                         background: var(--primary-color);
                         width: 60px;
@@ -382,8 +417,12 @@
                         align-items: center;
                         justify-content: center;
                         margin-bottom: 20px;
+                        transition: background 0.3s, transform 0.3s;
                     }
-
+                    .feature-card:hover .feature-icon {
+                        background: var(--secondary-color);
+                        transform: rotate(-8deg) scale(1.1);
+                    }
                     .feature-icon i {
                         color: white;
                         font-size: 30px;
@@ -436,5 +475,12 @@
             </div>
         </main>
     </div>
+    <footer style="width:100%;background:#f5fafd;border-top:1px solid #e0e0e0;padding:32px 0 16px 0;text-align:center;font-size:1rem;color:#7a8ca3;margin-top:60px;">
+      <div style="max-width:1200px;margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:8px;">
+        <div style="font-weight:600;color:#2196F3;letter-spacing:1px;">JomPekan</div>
+        <div style="font-size:0.98rem;">&copy; 2024 JomPekan. All rights reserved.</div>
+        <div style="font-size:0.95rem;">Contact: info@jompekan.com | <a href="#" style="color:#2196F3;text-decoration:none;">Privacy Policy</a> | <a href="#" style="color:#2196F3;text-decoration:none;">Terms of Service</a></div>
+      </div>
+    </footer>
 </body>
 </html>

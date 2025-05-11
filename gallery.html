@@ -7,45 +7,103 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
+    <style>
+        :root {
+            --primary-color: #2196F3;
+            --background-color: #f5f6fa;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .sidebar {
+            width: 100%;
+            background: white;
+            padding: 10px 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo h2 {
+            color: var(--primary-color);
+            margin-bottom: 0;
+            padding: 5px 0;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            margin: 0;
+        }
+
+        .nav-links li {
+            display: flex;
+            align-items: center;
+            padding: 8px 15px;
+            margin: 0 3px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links li:hover, .nav-links li.active {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .nav-links li i {
+            margin-right: 10px;
+        }
+    </style>
 </head>
 <body>
-    <nav class="navbar">
+    <nav class="sidebar">
         <div class="logo">
-            <i class="material-icons">photo_library</i>
             <h2>JomPekan</h2>
         </div>
         <ul class="nav-links">
-            <a href="index.html">
+            <a href="index.html" style="text-decoration: none; color: inherit;">
                 <li>
                     <i class="material-icons">home</i>
                     <span>Home</span>
                 </li>
             </a>
-            <a href="attractions.html">
+
+            <a href="attractions.html" style="text-decoration: none; color: inherit;">
                 <li>
                     <i class="material-icons">place</i>
                     <span>View Attractions</span>
                 </li>
             </a>
-            <a href="gallery.html">
+
+            <a href="gallery.html" style="text-decoration: none; color: inherit;">
                 <li class="active">
                     <i class="material-icons">photo_library</i>
                     <span>Gallery</span>
                 </li>
             </a>
-            <a href="wallet.html">
+
+            <a href="wallet.html" style="text-decoration: none; color: inherit;">
                 <li>
                     <i class="material-icons">account_balance_wallet</i>
                     <span>Wallet</span>
                 </li>
             </a>
-            <a href="planner.html">
+
+            <a href="planner.html" style="text-decoration: none; color: inherit;">
                 <li>
                     <i class="material-icons">event</i>
                     <span>Planner</span>
                 </li>
             </a>
-            <a href="login.html">
+
+            <a href="login.html" style="text-decoration: none; color: inherit;">
                 <li>
                     <i class="material-icons">login</i>
                     <span>Log In</span>

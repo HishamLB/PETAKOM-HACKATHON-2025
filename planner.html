@@ -8,6 +8,59 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <style>
+        :root {
+            --primary-color: #2196F3;
+            --background-color: #f5f6fa;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .sidebar {
+            width: 100%;
+            background: white;
+            padding: 10px 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo h2 {
+            color: var(--primary-color);
+            margin-bottom: 0;
+            padding: 5px 0;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            margin: 0;
+        }
+
+        .nav-links li {
+            display: flex;
+            align-items: center;
+            padding: 8px 15px;
+            margin: 0 3px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links li:hover, .nav-links li.active {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .nav-links li i {
+            margin-right: 10px;
+        }
+
         .planner-container {
             max-width: 1200px;
             margin: 0 auto;
@@ -24,6 +77,14 @@
             font-size: var(--font-size-3xl);
             color: var(--primary-color);
             margin-bottom: var(--spacing-sm);
+            letter-spacing: 2px;
+            text-shadow: 0 4px 24px rgba(33,150,243,0.12), 2px 2px 8px rgba(0,0,0,0.08);
+        }
+
+        .planner-header p {
+            color: #7a8ca3;
+            font-size: 1.2rem;
+            letter-spacing: 1px;
         }
 
         .planner-grid {
@@ -33,22 +94,30 @@
             animation: slideIn 0.5s ease-out;
         }
 
-        .preferences-form {
-            background: var(--surface-color);
-            padding: var(--spacing-xl);
-            border-radius: var(--radius-lg);
-            box-shadow: var(--shadow-lg);
-            position: sticky;
-            top: 100px;
-            height: fit-content;
-        }
-
         .preferences-form h2 {
-            color: var(--primary-color);
+            font-size: 1.45rem;
+            color: #222;
             margin-bottom: var(--spacing-lg);
             display: flex;
             align-items: center;
             gap: var(--spacing-sm);
+            font-weight: 600;
+        }
+
+        .preferences-form {
+            background: #f5fafd;
+            padding: var(--spacing-xl);
+            border-radius: var(--radius-lg);
+            box-shadow: 0 4px 20px rgba(33,150,243,0.08);
+            position: sticky;
+            top: 100px;
+            height: fit-content;
+            transition: none;
+        }
+
+        .preferences-form:hover {
+            box-shadow: 0 4px 20px rgba(33,150,243,0.08);
+            background: #f5fafd;
         }
 
         .form-group {
@@ -56,19 +125,22 @@
         }
 
         .form-group label {
-            display: block;
-            margin-bottom: var(--spacing-xs);
-            font-weight: 500;
-            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
 
-        .form-input, .form-select {
-            width: 100%;
-            padding: var(--spacing-md);
+        .form-group label i {
+            color: var(--primary-color);
+            font-size: 1.2rem;
+        }
+
+        .form-select, .form-input {
+            background: #f0f4fa;
             border: 2px solid #e0e0e0;
             border-radius: var(--radius-md);
-            transition: var(--transition-normal);
-            font-size: var(--font-size-md);
+            padding-left: 2.5rem;
+            position: relative;
         }
 
         .form-input:focus, .form-select:focus {
@@ -100,52 +172,114 @@
             align-items: center;
             gap: var(--spacing-xs);
             padding: var(--spacing-sm);
-            background: var(--background-color);
+            background: #f0f4fa;
             border-radius: var(--radius-md);
-            transition: var(--transition-normal);
+            transition: background 0.3s, color 0.3s, box-shadow 0.3s;
+            box-shadow: 0 2px 8px rgba(33,150,243,0.04);
+            font-weight: 500;
         }
 
         .interest-item input:checked + .interest-label {
-            background: var(--primary-color);
-            color: var(--text-light);
+            background: linear-gradient(135deg, #b7d8e6 60%, #e6e6fa 100%);
+            color: #1976D2;
+            box-shadow: 0 4px 16px rgba(33,150,243,0.12);
+            transform: scale(1.04);
+        }
+
+        .interest-label i {
+            color: #7a8ca3;
+            font-size: 1.3rem;
+            transition: color 0.3s, transform 0.3s;
+        }
+
+        .interest-item input:checked + .interest-label i {
+            color: #2196F3;
+            transform: scale(1.2) rotate(-8deg);
         }
 
         .generate-button {
             width: 100%;
             padding: var(--spacing-md);
-            background: var(--primary-color);
+            background: linear-gradient(90deg, #b7d8e6, #2196F3);
             color: var(--text-light);
             border: none;
             border-radius: var(--radius-md);
             font-weight: 500;
             cursor: pointer;
-            transition: var(--transition-normal);
+            transition: background 0.3s, box-shadow 0.3s, transform 0.2s;
             display: flex;
             align-items: center;
             justify-content: center;
             gap: var(--spacing-sm);
+            box-shadow: 0 2px 8px rgba(33,150,243,0.12);
+            position: relative;
+            overflow: hidden;
+            animation: pulse 1.8s infinite;
         }
 
         .generate-button:hover {
-            background: var(--primary-dark);
-            transform: translateY(-2px);
+            background: linear-gradient(90deg, #2196F3, #b7d8e6);
+            box-shadow: 0 4px 16px rgba(33,150,243,0.18);
+            transform: translateY(-2px) scale(1.04);
+        }
+
+        .generate-button:active::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            width: 120%;
+            height: 120%;
+            background: rgba(33,150,243,0.12);
+            border-radius: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            animation: ripple 0.5s linear;
+            pointer-events: none;
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(33,150,243,0.12); }
+            70% { box-shadow: 0 0 0 16px rgba(33,150,243,0); }
+            100% { box-shadow: 0 0 0 0 rgba(33,150,243,0); }
+        }
+
+        @keyframes ripple {
+            to {
+                transform: translate(-50%, -50%) scale(1);
+                opacity: 0;
+            }
         }
 
         .itinerary-display {
-            background: var(--surface-color);
+            background: #f5fafd;
             border-radius: var(--radius-lg);
-            box-shadow: var(--shadow-lg);
+            box-shadow: 0 4px 20px rgba(33,150,243,0.08);
             overflow: hidden;
+            animation: fadeIn 0.7s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .day-card {
             padding: var(--spacing-xl);
             border-bottom: 1px solid #eee;
             transition: var(--transition-normal);
+            position: relative;
         }
 
-        .day-card:hover {
-            background: var(--background-color);
+        .day-card::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 6px;
+            height: 100%;
+            background: linear-gradient(180deg, #b7d8e6, #2196F3);
+            border-radius: 6px 0 0 6px;
+            opacity: 0.18;
         }
 
         .day-header {
@@ -161,27 +295,38 @@
             display: flex;
             align-items: center;
             gap: var(--spacing-sm);
+            letter-spacing: 1px;
+            text-shadow: 0 2px 12px rgba(33,150,243,0.08);
         }
 
         .activity-item {
             display: flex;
             align-items: center;
             padding: var(--spacing-md);
-            background: var(--background-color);
+            background: #f0f4fa;
             border-radius: var(--radius-md);
             margin-bottom: var(--spacing-sm);
             transition: var(--transition-normal);
+            box-shadow: 0 2px 8px rgba(33,150,243,0.04);
         }
 
         .activity-item:hover {
             transform: translateX(10px);
-            box-shadow: var(--shadow-md);
+            box-shadow: 0 4px 16px rgba(33,150,243,0.12);
         }
 
         .activity-time {
             font-weight: 500;
             color: var(--primary-color);
             min-width: 100px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .activity-time i {
+            color: #7a8ca3;
+            font-size: 1.2rem;
         }
 
         .activity-details {
@@ -210,10 +355,27 @@
             color: var(--text-secondary);
             cursor: pointer;
             transition: var(--transition-normal);
+            border-radius: 50%;
+            position: relative;
         }
 
         .action-button:hover {
             color: var(--primary-color);
+            background: #e6e6fa;
+        }
+
+        .action-button:active::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            width: 120%;
+            height: 120%;
+            background: rgba(33,150,243,0.12);
+            border-radius: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            animation: ripple 0.5s linear;
+            pointer-events: none;
         }
 
         .empty-state {
@@ -251,43 +413,47 @@
     </style>
 </head>
 <body>
-    <nav class="navbar">
+    <nav class="sidebar">
         <div class="logo">
-            <i class="material-icons">event</i>
             <h2>JomPekan</h2>
         </div>
         <ul class="nav-links">
-            <a href="index.html">
+            <a href="index.html" style="text-decoration: none; color: inherit;">
                 <li>
                     <i class="material-icons">home</i>
                     <span>Home</span>
                 </li>
             </a>
-            <a href="attractions.html">
+
+            <a href="attractions.html" style="text-decoration: none; color: inherit;">
                 <li>
                     <i class="material-icons">place</i>
                     <span>View Attractions</span>
                 </li>
             </a>
-            <a href="gallery.html">
+
+            <a href="gallery.html" style="text-decoration: none; color: inherit;">
                 <li>
                     <i class="material-icons">photo_library</i>
                     <span>Gallery</span>
                 </li>
             </a>
-            <a href="wallet.html">
+
+            <a href="wallet.html" style="text-decoration: none; color: inherit;">
                 <li>
                     <i class="material-icons">account_balance_wallet</i>
                     <span>Wallet</span>
                 </li>
             </a>
-            <a href="planner.html">
+
+            <a href="planner.html" style="text-decoration: none; color: inherit;">
                 <li class="active">
                     <i class="material-icons">event</i>
                     <span>Planner</span>
                 </li>
             </a>
-            <a href="login.html">
+
+            <a href="login.html" style="text-decoration: none; color: inherit;">
                 <li>
                     <i class="material-icons">login</i>
                     <span>Log In</span>
@@ -309,7 +475,7 @@
                     Your Preferences
                 </h2>
                 <div class="form-group">
-                    <label for="duration">Trip Duration</label>
+                    <label for="duration"><i class="material-icons">schedule</i> Trip Duration</label>
                     <select id="duration" class="form-select">
                         <option value="1">1 Day</option>
                         <option value="2">2 Days</option>
@@ -320,51 +486,51 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="startDate">Start Date</label>
+                    <label for="startDate"><i class="material-icons">event</i> Start Date</label>
                     <input type="date" id="startDate" class="form-input">
                 </div>
 
                 <div class="form-group">
-                    <label>Interests</label>
+                    <label><i class="material-icons">interests</i> Interests</label>
                     <div class="interests-grid">
                         <div class="interest-item">
                             <input type="checkbox" id="historical" value="historical">
-                            <label for="historical" class="interest-label">
+                            <label for="historical" class="interest-label" style="background: #f6e7b4;">
                                 <i class="material-icons">history</i>
                                 Historical
                             </label>
                         </div>
                         <div class="interest-item">
                             <input type="checkbox" id="cultural" value="cultural">
-                            <label for="cultural" class="interest-label">
+                            <label for="cultural" class="interest-label" style="background: #d0e7f9;">
                                 <i class="material-icons">museum</i>
                                 Cultural
                             </label>
                         </div>
                         <div class="interest-item">
                             <input type="checkbox" id="nature" value="nature">
-                            <label for="nature" class="interest-label">
+                            <label for="nature" class="interest-label" style="background: #d6f5e3;">
                                 <i class="material-icons">landscape</i>
                                 Nature
                             </label>
                         </div>
                         <div class="interest-item">
                             <input type="checkbox" id="food" value="food">
-                            <label for="food" class="interest-label">
+                            <label for="food" class="interest-label" style="background: #ffe7d6;">
                                 <i class="material-icons">restaurant</i>
                                 Food
                             </label>
                         </div>
                         <div class="interest-item">
                             <input type="checkbox" id="shopping" value="shopping">
-                            <label for="shopping" class="interest-label">
+                            <label for="shopping" class="interest-label" style="background: #e6e6fa;">
                                 <i class="material-icons">shopping_bag</i>
                                 Shopping
                             </label>
                         </div>
                         <div class="interest-item">
                             <input type="checkbox" id="adventure" value="adventure">
-                            <label for="adventure" class="interest-label">
+                            <label for="adventure" class="interest-label" style="background: #f0e6fa;">
                                 <i class="material-icons">hiking</i>
                                 Adventure
                             </label>
